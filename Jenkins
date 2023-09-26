@@ -1,0 +1,11 @@
+node {
+
+    stage("Git Clone"){
+
+        git branch: 'main', changelog: false, credentialsId: 'GIT_HUB_CREDENTIALS', poll: false, url: 'https://github.com/konda2mounika/k8s-workspace.git'
+    }
+
+    stage("kubernetes deployment"){
+  sh 'kubectl apply -f 004-clusterIP.yml'
+}
+}
